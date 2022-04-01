@@ -51,12 +51,11 @@ class GenerarCursos(LoginRequiredMixin,View):
     login_url='/auth/login/'
     def get(self,request,**kwargs):
         query = Sede.objects.all()
-        for element in range(1,query.count()+1):
-            for i in range(1,12):
-                try:
-                    Curso.objects.create(curso=i,sede=element)
-                except:
-                    pass
+        for i in range(1,12):
+            try:
+                Curso.objects.create(curso=i,sede=1)
+            except:
+                pass
         return redirect('colegio:cursoIndex')
 
 class borrarCurso(LoginRequiredMixin,View):
