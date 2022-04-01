@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %}
+
+	{% endblock title %}</title>
+	{% if user.is_authenticated %}
+		{% include './navbar.html' %}
+	{% endif %}
+	{% block header %}
+
+	{% endblock header %}
+</head>
+<body>
+{% if user.is_authenticated %}
+	{% block content %}
+
+	{% endblock content %}
+{% else %}
+{% block auth %}
+{% endblock %}
+{% endif %}
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'js/jquery.min.js' %}">
+</body>
+</html>

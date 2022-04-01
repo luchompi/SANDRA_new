@@ -1,0 +1,18 @@
+{% extends "base/template.html" %}
+
+{% block title %}
+    Borrar Sede
+{% endblock title %}
+
+{% block header %}
+    <h1>Borrar Sede</h1>
+{% endblock header %}
+
+{% block content %}
+    <h3>Está a punto de borrar {{object.nombre}}</h3>
+    <p>continuar</p>
+    <form method="POST">
+    	{% csrf_token %}
+    	<button type="submit" class="btn btn-danger">Sí, borrar</button>
+    </form>
+{% endblock content %}

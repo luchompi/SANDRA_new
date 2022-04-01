@@ -1,0 +1,38 @@
+{% extends "base/template.html" %}
+
+{% block title %}
+    Listado de Sedes
+{% endblock title %}
+{% block header %}
+     <h1>Listado de Sedes <a class="btn btn-success" href="{% url 'colegio:sedeCreate' %}">Añadir nuevo</a></h1>
+{% endblock header %}
+
+{% block content %}
+{% if object_list %}
+       <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for row in object_list %}
+  		<tr>
+      <th scope="row">{{row.id}}</th>
+     <td>{{row.nombre}}</td>
+      <td><a class="btn btn-primary" href="{% url 'colegio:sedeDetail' row.id %}">Ver</a>
+      <a class="btn btn-warning" href="{% url 'colegio:sedeUpdate' row.id %}">Actualizar</a>
+      <a class="btn btn-danger" href="{% url 'colegio:sedeDelete' row.id %}">Borrar</a></td>
+    </tr>
+  	{% endfor %}
+    
+    
+  </tbody>
+</table>
+{% else %}
+    <p>No hay Registros</p>
+{% endif %}
+
+{% endblock content %}

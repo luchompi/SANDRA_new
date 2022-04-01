@@ -1,0 +1,39 @@
+{% extends "base/template.html" %}
+
+{% block title %}
+    Listado de Cursos
+{% endblock title %}
+
+{% block header %}
+    <h1>Listado de cursos <a href="{% url 'colegio:cursoGenerar' %}" class="btn btn-success">Generar Cursos</a></h1>
+{% endblock header %}
+
+{% block content %}
+{% if object_list %}
+    
+
+
+       <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Curso</th>
+      <th scope="col">Sede</th>
+      <th scope="col">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for row in object_list %}
+  		<tr>
+      <th scope="row">{{row.curso}}</th>
+     <td>{{row.sede.nombre}}</td>
+      <td>
+      <a class="btn btn-danger" href="{% url 'colegio:cursoDelete' row.curso %}">Borrar</a></td>
+    </tr>
+  	{% endfor %}
+  {% else %}
+        <p>No hay registros</p>  
+ {% endif %}
+  </tbody>
+</table>
+
+{% endblock content %}
