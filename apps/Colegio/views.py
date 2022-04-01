@@ -50,11 +50,10 @@ class CursoListView(LoginRequiredMixin,ListView):
 class GenerarCursos(LoginRequiredMixin,View):
     login_url='/auth/login/'
     def get(self,request,**kwargs):
-        query = Sede.objects.all()
         for i in range(1,12):
             try:
-                Curso.objects.create(curso=i,sede=1)
-            except:
+                Curso.objects.create(curso=i,sede_id=1)
+            except Exception as e:
                 pass
         return redirect('colegio:cursoIndex')
 
